@@ -2,68 +2,54 @@
 $(document).ready(function(){
 
   //Generate secret number between 1 and 100
-  function  generateNumber (minimum, maximum){
-      return Math.floor((Math.random() * 100) + 1);
-  }
-    var secretNumber = 0;
-    var count = 0;
+    function  generateNumber (minimum, maximum) {
+        return Math.floor((Math.random() * 100) + 1);
+    }
+        var secretNumber = 0;
+        var count = 0;
  
-	
-	/*--- Display information modal box ---*/
-  	$(".what").click(function(){
-    	$(".overlay").fadeIn(1000);
+	// Display information modal box 
+  	$('.what').click(function(){
+    	  $('.overlay').fadeIn(1000);
   	})
 
-  	/*--- Hide information modal box ---*/
-  	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
+  // Hide information modal box 
+  	$('a.close').click(function(){
+  		  $('.overlay').fadeOut(1000);
   	})
 
 
-    //  start new game
-    $(".new").click(function() {
+  // Start new game
+    $('.new').click(function() {
         console.log("***NEW GAME STARTED***")
+        count;
+        $('span#count').text(count)
         $('#userGuess').val('')
-
-        count = 0;
-        $("span#count").text(count);
-
-        $('#feedback').text("Make your Guess!");
-        // $("ul#guessList").closest("li").remove();
-
-       secretNumber = generateNumber(1,100)
+        $('#feedback').text("Make your Guess!")
+        $('.newguess').remove()
+        secretNumber = generateNumber(1,100)
         console.log("the secret number is " + secretNumber)
-
     })
 
 
-    // every time #guessButton is clicked, the number of guesses are displayed in span#count
-   
-    $('#guessButton').click(function (event) {
-      var number = $('#userGuess').val()
-      var userGuess = parseInt(number)
-        console.log("you guessed " + userGuess)
-        count += 1; 
-        $('#userGuess').val('')
-        
-        if (count > 0) {
-            $()
-            $('span#count').text(count)
-        }
-        
-        userGuessFeedback(secretNumber, userGuess) //provides user feedback
+  //Every time #guessButton is clicked, the number of guesses are displayed in span#count
+    $('#guessButton').click(function() {
+        var number = $('#userGuess').val()
+        var userGuess = parseInt(number)
+        console.log("You guessed " + userGuess)
 
-    }) //End click 
+        count += 1; 
+        if (count > 0) {
+            $('span#count').text(count)
+            $('ul#guessList').append('<li class="newguess">' + userGuess + '</li>')
+        }
+        $('#userGuess').val('')
+        userGuessFeedback(secretNumber, userGuess) //provides user feedback
+    }) 
   
 
-
-
-
-
-
-//providing user feedback 
+  // Provide user feedback 
 function userGuessFeedback (secretNumber, userGuess) {
-
     var feedback = secretNumber - userGuess;
     console.log("you are " + feedback + " number(s) away from the secret number");
 
@@ -71,7 +57,7 @@ function userGuessFeedback (secretNumber, userGuess) {
       $('#feedback').text("You Guessed It!");
     }
      else if (feedback <= 9 && feedback >= -9) { 
-       $('#feedback').text("Very Hot") // -9 to 9
+       $('#feedback').text("Very Hot") // between -9 to 9
     }
     else if (feedback >= 10 && feedback <= 20 || feedback <= -10 && feedback >= -20)  {
        $('#feedback').text("Hot") // between 10 and 20 or between -10 and -20
