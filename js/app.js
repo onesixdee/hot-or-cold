@@ -1,5 +1,12 @@
 
 $(document).ready(function(){
+
+  //Generate secret number between 1 and 100
+  function  generateNumber (minimum, maximum){
+      return Math.floor((Math.random() * 100) + 1);
+  }
+    var secretNumber = 0;
+ 
 	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
@@ -14,25 +21,29 @@ $(document).ready(function(){
 
     //  start new game
     $(".new").click(function() {
-      $("span#count").empty();
-      $("ul#guessList").closest("li").remove();
-      $("div#feedback").remove();
-      
-      // Get secret number to start guessing game
-      var secretNumber = function (minimum, maximum){
-          return Math.floor((Math.random() * 100) + 1);
-      }
-        console.log(secretNumber(1,100))
+     console.log("start new game")
+
+
+      // $("span#count").empty();
+      // $("ul#guessList").closest("li").remove();
+      // $("div#feedback").remove();
+
+       secretNumber = generateNumber(1,100)
+        console.log(secretNumber)
+
     })
 
 
     // every time #guessButton is clicked, the number of guesses are displayed in span#count
     var count = 0;
     $("#guessButton").click(function (event) {
-        count += 1; 
-        if (count > 0) {
-            $("span#count").html(" ")
-        }
+        // count += 1; 
+        // if (count > 0) {
+        //     $("span#count").html(" ")
+        // }
+        console.log($('#userGuess').val())
+        console.log(secretNumber)
+        userGuessFeedback(secretNumber,$('#userGuess').val())
     }) //End click 
   
 
@@ -42,36 +53,40 @@ $("#userguess").keypress(function (e) {
         var number = $(this).val()
         var userGuess = parseInt(number)
         if (e.which == 13) {
-              $(this).find("ul#guessList").append("<li>" + userGuess + "</li>") 
+          userGuessFeedback(secretNumber,$('#userGuess').val())
+              // $(this).find("ul#guessList5'").append("<li>" + userGuess + "</li>") 
         }
       })
 
-}) // end ready function
 
 
 //providing user feedback  NEED: document.write into div#feedback)
 function userGuessFeedback (secretNumber, userGuess) {
       var feedback = secretNumber - userGuess;
-      if ( feedback > 50) {
-        document.write("Ice-Cold");
+
+      if ( feedback >= 50) {
+         $('#feedback').text("Ice-Cold");
       }
-      else if ( feedback >= 30 && feedback <= 50) {
-        document.write("Cold");
+      else if ( feedback >= 30 && feedback <= 49) {
+       $('#feedback').text("Cold");
       }
       else if (feedback >=20 && feedback <= 30) {
-        document.write("Warm");
+        $('#feedback').text("Warm");
       }
       else if (feedback >= 10 && feedback <= 20) {
-        document.write("Hot")
+       $('#feedback').text("Hot")
+      }
+      else if (feedback == 0) {
+        $('#feedback').text("You Guessed It!");
       }
       else {
-        document.write("Very Hot");
+        $('#feedback').text("Very Hot");
       }
 }
 
 
 
-
+}) // end ready function
 
 
 
