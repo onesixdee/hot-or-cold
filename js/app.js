@@ -6,6 +6,7 @@ $(document).ready(function(){
       return Math.floor((Math.random() * 100) + 1);
   }
     var secretNumber = 0;
+    var count = 0;
  
 	
 	/*--- Display information modal box ---*/
@@ -21,29 +22,34 @@ $(document).ready(function(){
 
     //  start new game
     $(".new").click(function() {
-        console.log("start new game")
+        console.log("***NEW GAME STARTED***")
         $('#userGuess').val('')
-        $("span#count").text(0);
+
+        count = 0;
+        $("span#count").text(count);
+
         $('#feedback').text("Make your Guess!");
         // $("ul#guessList").closest("li").remove();
 
        secretNumber = generateNumber(1,100)
-        console.log(secretNumber)
+        console.log("the secret number is " + secretNumber)
 
     })
 
 
     // every time #guessButton is clicked, the number of guesses are displayed in span#count
-    var count = 0;
-    
-    $("#guessButton").click(function (event) {
+   
+    $('#guessButton').click(function (event) {
       var number = $('#userGuess').val()
       var userGuess = parseInt(number)
-        console.log(userGuess)
-        // count += 1; 
-        // if (count > 0) {
-        //     $("span#count").html(" ")
-        // }
+        console.log("you guessed " + userGuess)
+        count += 1; 
+        $('#userGuess').val('')
+        
+        if (count > 0) {
+            $()
+            $('span#count').text(count)
+        }
         
         userGuessFeedback(secretNumber, userGuess) //provides user feedback
 
