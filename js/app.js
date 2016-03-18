@@ -21,12 +21,11 @@ $(document).ready(function(){
 
     //  start new game
     $(".new").click(function() {
-     console.log("start new game")
-
-
-      // $("span#count").empty();
-      // $("ul#guessList").closest("li").remove();
-      // $("div#feedback").remove();
+        console.log("start new game")
+        $('#userGuess').val('')
+        $("span#count").text(0);
+        $('#feedback').text("Make your Guess!");
+        // $("ul#guessList").closest("li").remove();
 
        secretNumber = generateNumber(1,100)
         console.log(secretNumber)
@@ -36,55 +35,51 @@ $(document).ready(function(){
 
     // every time #guessButton is clicked, the number of guesses are displayed in span#count
     var count = 0;
+    
     $("#guessButton").click(function (event) {
+      var number = $('#userGuess').val()
+      var userGuess = parseInt(number)
+        console.log(userGuess)
         // count += 1; 
         // if (count > 0) {
         //     $("span#count").html(" ")
         // }
-        console.log($('#userGuess').val())
-        console.log(secretNumber)
-        userGuessFeedback(secretNumber,$('#userGuess').val())
+        
+        userGuessFeedback(secretNumber, userGuess) //provides user feedback
+
     }) //End click 
   
 
 
-// user guesses are first checked to be a valid number, then when user keypresses the enter key /NEED:(CLICK #guessbutton), then the user's guess is appended to ul#guessList)
-$("#userguess").keypress(function (e) {
-        var number = $(this).val()
-        var userGuess = parseInt(number)
-        if (e.which == 13) {
-          userGuessFeedback(secretNumber,$('#userGuess').val())
-              // $(this).find("ul#guessList5'").append("<li>" + userGuess + "</li>") 
-        }
-      })
 
 
 
-//providing user feedback  NEED: document.write into div#feedback)
+
+//providing user feedback 
 function userGuessFeedback (secretNumber, userGuess) {
-      var feedback = secretNumber - userGuess;
 
-      if ( feedback >= 50) {
-         $('#feedback').text("Ice-Cold");
-      }
-      else if ( feedback >= 30 && feedback <= 49) {
-       $('#feedback').text("Cold");
-      }
-      else if (feedback >=20 && feedback <= 30) {
-        $('#feedback').text("Warm");
-      }
-      else if (feedback >= 10 && feedback <= 20) {
-       $('#feedback').text("Hot")
-      }
-      else if (feedback == 0) {
-        $('#feedback').text("You Guessed It!");
-      }
-      else {
-        $('#feedback').text("Very Hot");
-      }
-}
+    var feedback = secretNumber - userGuess;
+    console.log("you are " + feedback + " number(s) away from the secret number");
 
-
+    if (feedback === 0) {
+      $('#feedback').text("You Guessed It!");
+    }
+     else if (feedback <= 9 && feedback >= -9) { 
+       $('#feedback').text("Very Hot") // -9 to 9
+    }
+    else if (feedback >= 10 && feedback <= 20 || feedback <= -10 && feedback >= -20)  {
+       $('#feedback').text("Hot") // between 10 and 20 or between -10 and -20
+    }
+     else if (feedback >= 21 && feedback <= 30 || feedback <= -21 && feedback >= -30) {
+       $('#feedback').text("Warm") //between 21 and 30 or between -21 and -30
+    }
+    else if (feedback >= 31 && feedback <= 49 || feedback <= -31 && feedback >= -49) {
+       $('#feedback').text("Cold")// between 31 and 49 or between -31 and -49
+    }
+    else {
+       $('#feedback').text("Ice-Cold") // 50/-50 or further away
+    }
+  }
 
 }) // end ready function
 
