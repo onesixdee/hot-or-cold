@@ -22,7 +22,7 @@ $(document).ready(function(){
   // Start new game
     $('.new').click(function() {
         console.log("***NEW GAME STARTED***")
-        count;
+        count = 0;
         $('span#count').text(count)
         $('#userGuess').val('')
         $('#feedback').text("Make your Guess!")
@@ -55,18 +55,23 @@ function userGuessFeedback (secretNumber, userGuess) {
 
     if (feedback === 0) {
       $('#feedback').text("You Guessed It!");
+      console.log(text)
     }
      else if (feedback <= 9 && feedback >= -9) { 
        $('#feedback').text("Very Hot") // between -9 to 9
+       console.log(text)
     }
     else if (feedback >= 10 && feedback <= 20 || feedback <= -10 && feedback >= -20)  {
        $('#feedback').text("Hot") // between 10 and 20 or between -10 and -20
+       console.log(text)
     }
      else if (feedback >= 21 && feedback <= 30 || feedback <= -21 && feedback >= -30) {
        $('#feedback').text("Warm") //between 21 and 30 or between -21 and -30
+       console.log(text)
     }
     else if (feedback >= 31 && feedback <= 49 || feedback <= -31 && feedback >= -49) {
        $('#feedback').text("Cold")// between 31 and 49 or between -31 and -49
+       console.log(text)
     }
     else {
        $('#feedback').text("Ice-Cold") // 50/-50 or further away
