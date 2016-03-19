@@ -35,9 +35,11 @@ $(document).ready(function(){
     $('#guessButton').click(function() {
         var number = $('#userGuess').val()
         var userGuess = parseInt(number)
+
+        if (userGuess) { 
         console.log("You guessed " + userGuess)
         $('ul#guessList').append('<li class="newGuess">' + userGuess + '</li>')
-
+        }
         count += 1; 
         if (count > 0) {
             $('span#count').text(count)
@@ -73,7 +75,12 @@ $(document).ready(function(){
     if (feedback === 0) {
        $('#feedback').text("You Guessed the Secret Number!");
     }
-     else if (feedback <= 9 && feedback >= -9) { 
+    else if (userGuess % 1 !== 0) {
+       $('#feedback').text("Pick a number between 1-100.")
+       count--;
+       $('span#count').text(count)
+    }
+    else if (feedback <= 9 && feedback >= -9) { 
        $('#feedback').text("Very Hot") // between -9 to 9
     }
     else if (feedback >= 10 && feedback <= 20 || feedback <= -10 && feedback >= -20)  {
