@@ -73,7 +73,7 @@ $(document).ready(function(){
     console.log("you are " + feedback + " number(s) away from the secret number");
 
     if (feedback === 0) {
-       $('#feedback').text("You Guessed the Secret Number!");
+       $('#feedback').text("The Secret Number is " + secretNumber + "!");
     }
     else if (userGuess % 1 !== 0) {
        $('#feedback').text("Pick a number between 1-100.")
