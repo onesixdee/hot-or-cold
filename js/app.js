@@ -13,7 +13,7 @@ $(document).ready(function() {
     // Starts a new game
     newGameButton.click(newGame)
 
-    guessButton.click(trackGuess)
+    guessButton.click(validNumber)
 
     
    //A function to generate a secret number between 1 and 100
@@ -32,12 +32,6 @@ $(document).ready(function() {
       secretNumber = generateNumber(1,100)
       console.log("Secret number is " + secretNumber)
     }
-
-    function trackGuess () {
-      validNumber()
-      userInput.val('')
-    }
-
 
   // Feedback will be provided to the user on a scale of Very Hot to Ice-Cold based on how close or how far out the user's guess is.
     function generateFeedback (secretNumber, userGuess) {
@@ -67,8 +61,10 @@ $(document).ready(function() {
           guessList.append('<li class="newGuess">' + userGuess + '</li>')
           increaseCount()
           generateFeedback(secretNumber, userGuess)
+          userInput.val('')
       } else {
           alert("Please choose a number between 1-100.")
+          userInput.val('')
       }
     }
 
