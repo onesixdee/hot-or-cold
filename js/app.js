@@ -1,40 +1,41 @@
+'use strict' // strict mode
 
+$(document).ready(function(){
 
-$(document).ready(function() {
-
-    newGameButton = $('.new')
-    count = $('#count')
-    feedbackHeader = $('#feedback')
-    userInput = $('#userGuess')
-    guessButton = $('#guessButton')
-    guessList = $('#guessList')
-    
+    var newGameButton = $('.new');
+    var count = $('#count');
+    var feedbackHeader = $('#feedback');
+    var userInput = $('#userGuess');
+    var guessButton = $('#guessButton');
+    var guessList = $('#guessList');
+    var guessCount = 0;
+    var secretNumber = 0;
     
     // Starts a new game
-    newGameButton.click(newGame)
+    newGameButton.click(newGame);
 
-    guessButton.click(validNumber)
+    guessButton.click(validNumber);
 
     
    //A function to generate a secret number between 1 and 100
-    function  generateNumber (minimum, maximum) {
-        return Math.floor((Math.random() * 100) + 1);
+    function  generateNumber (minimum, maximum){
+        return Math.floor((Math.random() * maximum) + minimum);
     }
     
   // A new game will start when clicking .new and will reset span#count, #userGuess, #feedback, and removing .newGuess. A secret number between 1 and 100 will be generated.
-    function newGame () {
+    function newGame (){
       console.log("***NEW GAME STARTED***")
       guessCount = 0;
       count.text(guessCount)
       userInput.val('')
       feedbackHeader.text("Make your Guess!")
       $('.newGuess').remove()
-      secretNumber = generateNumber(1,100)
+      secretNumber = generateNumber(1,100);
       console.log("Secret number is " + secretNumber)
     }
 
   // Feedback will be provided to the user on a scale of Very Hot to Ice-Cold based on how close or how far out the user's guess is.
-    function generateFeedback (secretNumber, userGuess) {
+    function generateFeedback (secretNumber, userGuess){
       var userFeedback = secretNumber - userGuess;
       console.log("You are " + userFeedback + " number(s) away from the secret number");
       if (userFeedback === 0) {
@@ -53,9 +54,9 @@ $(document).ready(function() {
     }
 
 
-    function validNumber () {
-      number = userInput.val()
-      userGuess = parseInt(number)
+    function validNumber (){
+      var number = userInput.val()
+      var userGuess = parseInt(number)
       console.log("You guessed " + userGuess)
       if (userGuess >= 1 && userGuess <= 100) {
           guessList.append('<li class="newGuess">' + userGuess + '</li>')
@@ -74,13 +75,13 @@ $(document).ready(function() {
     }
 
   // Display information modal box 
-    $('.what').click(function() {
-        $('.overlay').fadeIn(1000);
+    $('.what').click(function(){
+      $('.overlay').fadeIn(1000);
     })
 
     // Hide information modal box 
-    $('a.close').click(function() {
-        $('.overlay').fadeOut(1000);
+    $('a.close').click(function(){
+      $('.overlay').fadeOut(1000);
     })
   
 
