@@ -97,7 +97,6 @@ $(document).ready(function() {
       var userGuess = parseInt(number)
       console.log("You guessed " + userGuess)
       if (userGuess >= 1 && userGuess <= 100) {
-          // guessList.append('<li class="newGuess">' + userGuess + '</li>')
           increaseCount()
           generateFeedback(secretNumber, userGuess)
           userInput.val('')
