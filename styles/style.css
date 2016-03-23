@@ -310,7 +310,7 @@ ul.guessBox {
 }
 ul.guessBox li {
 	display: inline;
-	background-color: #1a4e95;
+	/*background-color: #1a4e95;*/
 	padding: 0.3em;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -318,4 +318,28 @@ ul.guessBox li {
 	width: 95%;
 	margin: 0.2em;
 	color: #fff;
+}
+
+.secret {
+	background-color: green;
+}
+
+.Very-Hot {
+	background-color: red;
+}
+
+.Hot {
+	background-color: orange;
+}
+
+.Warm {
+	background-color: yellow;
+}
+
+.Cold {
+	background-color: blue;
+}
+
+.Ice-Cold {
+	background-color:  purple;
 }
