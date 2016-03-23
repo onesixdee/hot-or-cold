@@ -1,13 +1,13 @@
 'use strict' // strict mode
 
-$(document).ready(function(){
+$(document).ready(function() {
 
-    var newGameButton = $('.new');
-    var count = $('#count');
-    var feedbackHeader = $('#feedback');
-    var userInput = $('#userGuess');
-    var guessButton = $('#guessButton');
-    var guessList = $('#guessList');
+    var newGameButton = $('.new')
+    var count = $('#count')
+    var feedbackHeader = $('#feedback')
+    var userInput = $('#userGuess')
+    var guessButton = $('#guessButton')
+    var guessList = $('#guessList')
     var guessCount = 0;
     var secretNumber = 0;
     
@@ -15,6 +15,25 @@ $(document).ready(function(){
     newGameButton.click(newGame);
 
     guessButton.click(validNumber);
+
+
+  $(userInput).keypress(function(event) {
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        validNumber()  
+    }
+  })
+
+  // Display information modal box 
+    $('.what').click(function(){
+      $('.overlay').fadeIn(1000);
+    })
+
+    // Hide information modal box 
+    $('a.close').click(function(){
+      $('.overlay').fadeOut(1000);
+    })
+  
 
     
    //A function to generate a secret number between 1 and 100
@@ -31,6 +50,7 @@ $(document).ready(function(){
       feedbackHeader.text("Make your Guess!")
       $('.newGuess').remove()
       secretNumber = generateNumber(1,100);
+      feedbackHeader.removeClass()
       console.log("Secret number is " + secretNumber)
     }
 
@@ -39,17 +59,35 @@ $(document).ready(function(){
       var userFeedback = secretNumber - userGuess;
       console.log("You are " + userFeedback + " number(s) away from the secret number");
       if (userFeedback === 0) {
-           feedbackHeader.text("The Secret Number is " + secretNumber + "!");   
+           feedbackHeader.text("The Secret Number is " + secretNumber + "!"); 
+           guessList.append('<li class="secret newGuess">' + userGuess + '</li>') 
+           feedbackHeader.removeClass()
+            feedbackHeader.addClass('secret');
       } else if (userFeedback <= 9 && userFeedback >= -9) { 
            feedbackHeader.text("Very Hot") // between -9 to 9
+           guessList.append('<li class="Very-Hot newGuess">' + userGuess + '</li>')
+            feedbackHeader.removeClass()
+            feedbackHeader.addClass('Very-Hot');
       } else if (userFeedback >= 10 && userFeedback <= 20 || userFeedback <= -10 &&  userFeedback >= -20)  {
            feedbackHeader.text("Hot") // between 10 and 20 or between -10 and -20
+           guessList.append('<li class=" Hot newGuess">' + userGuess + '</li>')
+            feedbackHeader.removeClass()
+            feedbackHeader.addClass('Hot');
       } else if (userFeedback >= 21 && userFeedback <= 30 || userFeedback <= -21 && userFeedback >= -30) {
            feedbackHeader.text("Warm") //between 21 and 30 or between -21 and -30
+           guessList.append('<li class=" Warm newGuess">' + userGuess + '</li>')
+            feedbackHeader.removeClass()
+            feedbackHeader.addClass('Warm');
       } else if (userFeedback >= 31 && userFeedback <= 49 || userFeedback <= -31 && userFeedback >= -49) {
            feedbackHeader.text("Cold")// between 31 and 49 or between -31 and -49
+           guessList.append('<li class="Cold newGuess">' + userGuess + '</li>')
+            feedbackHeader.removeClass()
+            feedbackHeader.addClass('Cold');
       } else {
            feedbackHeader.text("Ice-Cold") // 50/-50 or further away
+           guessList.append('<li class="Ice-Cold newGuess">' + userGuess + '</li>')
+            feedbackHeader.removeClass()
+            feedbackHeader.addClass('Ice-Cold');
       }
     }
 
@@ -59,7 +97,7 @@ $(document).ready(function(){
       var userGuess = parseInt(number)
       console.log("You guessed " + userGuess)
       if (userGuess >= 1 && userGuess <= 100) {
-          guessList.append('<li class="newGuess">' + userGuess + '</li>')
+          // guessList.append('<li class="newGuess">' + userGuess + '</li>')
           increaseCount()
           generateFeedback(secretNumber, userGuess)
           userInput.val('')
@@ -69,21 +107,11 @@ $(document).ready(function(){
       }
     }
 
+
     function increaseCount(){
       guessCount++;
       count.text(guessCount)
     }
-
-  // Display information modal box 
-    $('.what').click(function(){
-      $('.overlay').fadeIn(1000);
-    })
-
-    // Hide information modal box 
-    $('a.close').click(function(){
-      $('.overlay').fadeOut(1000);
-    })
-  
 
 }) // end ready function
 
