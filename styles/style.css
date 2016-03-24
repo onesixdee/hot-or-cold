@@ -210,9 +210,9 @@ h1 {
 
 h2 {
 	margin: 0 auto;	
-	background: #cc324b;
+	background: #f39c12;
 	padding: 1em 0.4em;
-	font-size: 1.5em;
+	font-size: 1.8em;
 	font-weight: 400;
 	display: block;
 	line-height: 1em;
@@ -223,8 +223,10 @@ h2 {
 
 .game p {
 	margin-top: 0.5em;
-	font-size: 1.8em;
+	font-size: 1.7em;
 	padding-bottom: 0.5em;
+	color: #a7a9ac;
+	letter-spacing: 0.03em;
 }
 
 #count {
@@ -234,46 +236,58 @@ h2 {
 }
 
 input, button {
-	width: 300px;
-	height: 50px;
+	width: 220px;
 	display: block;
 	padding: 0.8em 0;
-	margin: 0.8em auto 0;
+	margin: 0.4em auto 0;
 	background: #50597b;
 	color: #fff;
-	border: solid 1px #1f253d;
+	border: none;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 }
 
+input {
+	height: 100px;
+}
+
 button.button {
-	background: #1F253D;
-	color: #95a5a6;
-	font-size: 2em;
+	height: 50px;
 	padding: 0.2em;
-	-webkit-transition: background 1s ease-in-out;
+	margin-bottom: 30px;
+	border: solid 1px #673857;
+	background: #9e1f63;
+	color: #4f1034;
+	font-size: 1.5em;
+	font-weight: bold;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+/*	-webkit-transition: background 1s ease-in-out;
 	-moz-transition: background 1s ease-in-out;
 	-ms-transition: background 1s ease-in-out;
 	-o-transition: background 1s ease-in-out;
-	transition: background 1s ease-in-out;
+	transition: background 1s ease-in-out;*/
 }
 
 button.button:hover {
-	background: #e64c65;
-	color: #fff;
-	-webkit-transition: background 1s ease-in-out;
-	-moz-transition: background 1s ease-in-out;
-	-ms-transition: background 1s ease-in-out;
-	-o-transition: background 1s ease-in-out;
-	transition: background 1s ease-in-out;
+	background: #9b045b;
 	cursor: pointer;
 }
 
 input.text {
 	text-align: center;
-	padding: 0.2em;
-	font-size: 2em;
+	margin-top: 30px;
+	padding: 0.2em;	
+	color: #fff;
+	font-size: 1.8em;
+	letter-spacing: 0.03em;
+/*	-webkit-transition: background 1s ease-in-out;
+	-moz-transition: background 1s ease-in-out;
+	-ms-transition: background 1s ease-in-out;
+	-o-transition: background 1s ease-in-out;
+	transition: background 1s ease-in-out;*/
+	
 }
 
 input:focus {
@@ -281,25 +295,26 @@ input:focus {
 }
 
 ::-webkit-input-placeholder {
-   color: #95a5a6;
+   color: #89899b;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #95a5a6;
+   color: #cfd8ee;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #95a5a6; 
+   color: #cfd8ee; 
 }
 
 :-ms-input-placeholder {  
-   color: #95a5a6; 
+   color: #cfd8ee; 
 }
+
 
 ul.guessBox {
 	height: 80px;
 	margin: 10px auto 0;
-	background: #11a8ab;
+	background: #f39c12;
 	padding: 0.5em;
 	display: block;
 	line-height: 2em;
@@ -311,7 +326,7 @@ ul.guessBox {
 ul.guessBox li {
 	display: inline;
 	/*background-color: #1a4e95;*/
-	padding: 0.3em;
+	padding: 0.4em;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -321,25 +336,25 @@ ul.guessBox li {
 }
 
 .secret {
-	background-color: green;
+	background-color: #009444;
 }
 
-.Very-Hot {
-	background-color: red;
+.very-hot {
+	background-color: #be1e2d;
 }
 
-.Hot {
-	background-color: orange;
+.hot {
+	background-color: #f15a29;
 }
 
-.Warm {
-	background-color: yellow;
+.warm {
+	background-color: #fbb040;
 }
 
-.Cold {
-	background-color: blue;
+.cold {
+	background-color: #00aeef;
 }
 
-.Ice-Cold {
-	background-color:  purple;
+.ice-cold {
+	background-color:  #2e3192;
 }
