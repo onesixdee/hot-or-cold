@@ -54,7 +54,7 @@ $(document).ready(function() {
       feedbackHeader.text("Make your Guess!")
       // class will be removed from feedbackHeader
       feedbackHeader.removeClass()
-      // all li's with .newGuess will be removed
+      // all li's with .newGuess will  be removed
       $('.newGuess').remove()
       // The function generateNumber will be called and will be put in a secretNumber variable
       secretNumber = generateNumber(1,100)
