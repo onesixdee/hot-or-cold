@@ -210,9 +210,9 @@ h1 {
 
 h2 {
 	margin: 0 auto;	
-	background: #f39c12;
+	background-color: #a00449;
 	padding: 1em 0.4em;
-	font-size: 1.8em;
+	font-size: 1.5em;
 	font-weight: 400;
 	display: block;
 	line-height: 1em;
@@ -225,7 +225,7 @@ h2 {
 	margin-top: 0.5em;
 	font-size: 1.7em;
 	padding-bottom: 0.5em;
-	color: #a7a9ac;
+	color: #000;
 	letter-spacing: 0.03em;
 }
 
@@ -236,10 +236,10 @@ h2 {
 }
 
 input, button {
-	width: 220px;
+	width: 300px;
 	display: block;
 	padding: 0.8em 0;
-	margin: 0.4em auto 0;
+	margin: 0.6em auto 0;
 	background: #50597b;
 	color: #fff;
 	border: none;
@@ -249,16 +249,16 @@ input, button {
 }
 
 input {
-	height: 100px;
+	height: 70px;
 }
 
 button.button {
 	height: 50px;
 	padding: 0.2em;
-	margin-bottom: 30px;
-	border: solid 1px #673857;
-	background: #9e1f63;
-	color: #4f1034;
+	margin-bottom: 15px;
+	border: solid 1px #0d183b;
+	background-color: #0d183b;
+	color: #7683ad;
 	font-size: 1.5em;
 	font-weight: bold;
 	letter-spacing: 0.05em;
@@ -271,7 +271,7 @@ button.button {
 }
 
 button.button:hover {
-	background: #9b045b;
+	background-color: #070c1e;
 	cursor: pointer;
 }
 
@@ -280,7 +280,7 @@ input.text {
 	margin-top: 30px;
 	padding: 0.2em;	
 	color: #fff;
-	font-size: 1.8em;
+	font-size: 2em;
 	letter-spacing: 0.03em;
 /*	-webkit-transition: background 1s ease-in-out;
 	-moz-transition: background 1s ease-in-out;
@@ -314,7 +314,7 @@ input:focus {
 ul.guessBox {
 	height: 80px;
 	margin: 10px auto 0;
-	background: #f39c12;
+	background-color: #a00449;
 	padding: 0.5em;
 	display: block;
 	line-height: 2em;
@@ -340,7 +340,7 @@ ul.guessBox li {
 }
 
 .very-hot {
-	background-color: #be1e2d;
+	background-color: #e20303;
 }
 
 .hot {
