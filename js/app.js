@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 'use strict' // strict mode
 
 $(document).ready(function() {
@@ -133,7 +133,7 @@ $(document).ready(function() {
 }) // end ready function
 
 
-=======
+
 //initialize variables
 'use strict';
 var secretNumber, 
@@ -294,8 +294,5 @@ function resetVariables(){
   	
 
   
-
-
->>>>>>> 0ea735abcc4f2eab6b6eaffd2b1227a5cbddb99f
 
 
